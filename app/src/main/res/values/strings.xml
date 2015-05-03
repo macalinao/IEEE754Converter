@@ -6,4 +6,13 @@
     <string name="enter_number">Enter a decimal number (e.g. 100, 1.4)</string>
     <string name="x32">32-bit</string>
     <string name="x64">64-bit</string>
+
+    <string name="sign">Sign</string>
+    <string name="exponent">Exponent</string>
+    <string name="mantissa">Mantissa</string>
+
+    <string name="representation">Representation</string>
+    <string name="binary">Binary</string>
+    <string name="decimal">Decimal</string>
+    <string name="hex">Hex</string>
 </resources>

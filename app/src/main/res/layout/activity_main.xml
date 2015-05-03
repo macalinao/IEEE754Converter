@@ -15,7 +15,7 @@
         android:textOff="@string/x32"
         android:textOn="@string/x32"
         android:onClick="onBitsSelected"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/number"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -29,7 +29,7 @@
         android:textOff="@string/x64"
         android:textOn="@string/x64"
         android:onClick="onBitsSelected"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/number"
         android:layout_toRightOf="@+id/x32"
         android:layout_toEndOf="@+id/x32" />
 
@@ -38,12 +38,86 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/number"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:hint="@string/enter_number" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/representation"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/x32"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/sign"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingEnd="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/exponent"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/sign"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/textView2"
+        android:layout_toStartOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/exponent"
+        android:layout_below="@+id/textView2"
+        android:layout_toRightOf="@+id/sign"
+        android:layout_toEndOf="@+id/sign" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/mantissa"
+        android:id="@+id/textView4"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/sign"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/mantissa"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
