@@ -1,7 +1,9 @@
 IEEE-754 Converter
 ==================
 
-![Logo](https://raw.githubusercontent.com/simplyianm/IEEE754Converter/master/assets/logo.png)
+[![Logo](https://raw.githubusercontent.com/simplyianm/IEEE754Converter/master/assets/logo.png)][link]
+
+[Play Store][link]
 
 An app to convert IEEE-754 format to different representations.
 
@@ -14,3 +16,5 @@ An app to convert IEEE-754 format to different representations.
 
 ## License
 MIT
+
+[link]: https://play.google.com/store/apps/details?id=pw.ian.ieee754converter
