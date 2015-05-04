@@ -1,6 +1,8 @@
 IEEE-754 Converter
 ==================
 
+![Logo](https://raw.githubusercontent.com/simplyianm/IEEE754Converter/master/assets/logo.png)
+
 An app to convert IEEE-754 format to different representations.
 
 (My first published Android app!)
