@@ -59,6 +59,8 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+
+        recalculate();
     }
 
     public void set32Bit(boolean value) {
