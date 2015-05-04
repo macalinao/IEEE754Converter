@@ -67,21 +67,35 @@ public class MainActivity extends ActionBarActivity {
         x32.setChecked(value);
         x64.setChecked(!value);
         is32Bit = value;
+        recalculate();
     }
 
     public void recalculate() {
         double number;
+        long digits, sign, exponent, mantissa;
         try {
             number = Double.parseDouble(((EditText) findViewById(R.id.number)).getText().toString());
+
+            digits = is32Bit ? // Get the binary representation
+                    Float.floatToIntBits((float) number) :
+                    Double.doubleToLongBits(number);
+
+            sign = is32Bit ? // first bit
+                    ((digits >>> 32 - 1) & 0b1)
+                    : ((digits >>> 64 - 1) & 0b1);
+
+            exponent = is32Bit ?
+                    ((digits >>> 32 - 1 - 8) & 0b11111111) : // next 8 bits
+                    ((digits >>> 64 - 1 - 11) & 0b11111111111); // next 11 bits
+
+            mantissa = is32Bit ?
+                    (digits & 0x7fffff) : // last 23 bits
+                    (digits & 0x1fffffffffffffl); // last 53 bits
         } catch (NumberFormatException ex) {
+            // Reset on invalid number
+            digits = sign = exponent = mantissa = 0;
             return;
         }
-
-        long digits = Double.doubleToLongBits(number);
-
-        long sign = ((digits >>> 64 - 1) & 0b1); // first bit
-        long exponent = ((digits >>> 64 - 1 - 11) & 0b11111111111); // next 11 bits
-        long mantissa = (digits & 0x1fffffffffffffl); // last 53 bits
 
         String signStr = Long.toBinaryString(sign);
         String expStr = Long.toBinaryString(exponent);
