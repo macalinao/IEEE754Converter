@@ -77,8 +77,8 @@ public class MainActivity extends ActionBarActivity {
             number = Double.parseDouble(((EditText) findViewById(R.id.number)).getText().toString());
 
             digits = is32Bit ? // Get the binary representation
-                    Float.floatToIntBits((float) number) :
-                    Double.doubleToLongBits(number);
+                    Float.floatToRawIntBits((float) number) :
+                    Double.doubleToRawLongBits(number);
 
             sign = is32Bit ? // first bit
                     ((digits >>> 32 - 1) & 0b1)
@@ -113,12 +113,22 @@ public class MainActivity extends ActionBarActivity {
         // Mantissa
         double unshiftedMantissa = is32Bit ?
                 (Float.intBitsToFloat((0b1111111 << 23) | ((int) mantissa)))
-                : (Double.longBitsToDouble((0b1111111111 << 52) | mantissa));
+                : (Double.longBitsToDouble((0b1111111111l << 52) | mantissa));
         String manStr = (unshiftedMantissa) + "\n"
                 // Pad binary string
                 + String.format("%" + (is32Bit ? 23 : 52) + "s",
                 Long.toBinaryString(mantissa)).replace(' ', '0');
         ((TextView) findViewById(R.id.mantissa)).setText(manStr);
+
+        // Representations
+        ((TextView) findViewById(R.id.binaryRep)).setText(is32Bit ?
+                Integer.toBinaryString(Float.floatToRawIntBits((float) number))
+                : Long.toBinaryString(Double.doubleToRawLongBits(number)));
+        ((TextView) findViewById(R.id.hexRep)).setText(is32Bit ?
+                Integer.toHexString(Float.floatToRawIntBits((float) number))
+                : Long.toHexString(Double.doubleToRawLongBits(number)));
+        ((TextView) findViewById(R.id.decRep)).setText(is32Bit ?
+                Float.toString((float) number) : Double.toString(number));
     }
 
     @Override
