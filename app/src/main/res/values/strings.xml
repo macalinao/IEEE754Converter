@@ -17,4 +17,7 @@
     <string name="binary">Binary</string>
     <string name="decimal">Decimal</string>
     <string name="hex">Hex</string>
+
+    <string name="about_message">&#169; 2015 Ian Macalinao. Released under the MIT license.\n\nGitHub:\nhttps://github.com/simplyianm/IEEE754Converter\n\nFeedback:\nme@ian.pw</string>
+    <string name="ok">Coolbeans</string>
 </resources>

@@ -1,5 +1,6 @@
 package pw.ian.ieee754converter;
 
+import android.app.DialogFragment;
 import android.database.MatrixCursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -153,6 +154,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.about) {
+            DialogFragment dialog = new AboutDialogFragment();
+            dialog.show(getFragmentManager(), "AboutDialogFragment");
             return true;
         }
 
