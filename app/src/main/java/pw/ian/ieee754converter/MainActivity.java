@@ -97,11 +97,20 @@ public class MainActivity extends ActionBarActivity {
             return;
         }
 
+        // Sign
         String signStr = Long.toBinaryString(sign);
-        String expStr = Long.toBinaryString(exponent);
-        String manStr = Long.toBinaryString(mantissa);
+        signStr = (sign == 1 ? "-1" : "+1") + "\n" + signStr;
         ((TextView) findViewById(R.id.sign)).setText(signStr);
+
+        // Exponent w/ bias
+        int expBias = is32Bit ? 127 : 1023;
+        String expStr = Long.toBinaryString(exponent);
+        expStr = (exponent + " - " + expBias + "= " + (exponent - expBias)) + "\n" + expStr;
         ((TextView) findViewById(R.id.exponent)).setText(expStr);
+
+        // Mantissa
+        String manStr = Long.toBinaryString(mantissa);
+        manStr = (mantissa) + "\n" + manStr;
         ((TextView) findViewById(R.id.mantissa)).setText(manStr);
     }
 
