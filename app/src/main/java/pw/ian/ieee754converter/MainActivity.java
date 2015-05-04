@@ -75,27 +75,26 @@ public class MainActivity extends ActionBarActivity {
         long digits, sign, exponent, mantissa;
         try {
             number = Double.parseDouble(((EditText) findViewById(R.id.number)).getText().toString());
-
-            digits = is32Bit ? // Get the binary representation
-                    Float.floatToRawIntBits((float) number) :
-                    Double.doubleToRawLongBits(number);
-
-            sign = is32Bit ? // first bit
-                    ((digits >>> 32 - 1) & 0b1)
-                    : ((digits >>> 64 - 1) & 0b1);
-
-            exponent = is32Bit ?
-                    ((digits >>> 32 - 1 - 8) & 0b11111111) : // next 8 bits
-                    ((digits >>> 64 - 1 - 11) & 0b11111111111); // next 11 bits
-
-            mantissa = is32Bit ?
-                    (digits & 0x7fffff) : // last 23 bits
-                    (digits & 0x1fffffffffffffl); // last 53 bits
         } catch (NumberFormatException ex) {
             // Reset on invalid number
-            digits = sign = exponent = mantissa = 0;
-            return;
+            number = 0;
         }
+
+        digits = is32Bit ? // Get the binary representation
+                Float.floatToRawIntBits((float) number) :
+                Double.doubleToRawLongBits(number);
+
+        sign = is32Bit ? // first bit
+                ((digits >>> 32 - 1) & 0b1)
+                : ((digits >>> 64 - 1) & 0b1);
+
+        exponent = is32Bit ?
+                ((digits >>> 32 - 1 - 8) & 0b11111111) : // next 8 bits
+                ((digits >>> 64 - 1 - 11) & 0b11111111111); // next 11 bits
+
+        mantissa = is32Bit ?
+                (digits & 0x7fffff) : // last 23 bits
+                (digits & 0x1fffffffffffffl); // last 53 bits
 
         // Sign
         String signStr = (sign == 1 ? "-1" : "+1") + "\n"
@@ -129,6 +128,11 @@ public class MainActivity extends ActionBarActivity {
                 : Long.toHexString(Double.doubleToRawLongBits(number)));
         ((TextView) findViewById(R.id.decRep)).setText(is32Bit ?
                 Float.toString((float) number) : Double.toString(number));
+    }
+
+    public void reset(View view) {
+        ((TextView) findViewById(R.id.number)).setText("");
+        recalculate();
     }
 
     @Override

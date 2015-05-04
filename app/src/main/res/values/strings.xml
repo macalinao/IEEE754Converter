@@ -6,6 +6,7 @@
     <string name="enter_number">Enter a decimal number (e.g. 100, 1.4)</string>
     <string name="x32">32-bit</string>
     <string name="x64">64-bit</string>
+    <string name="reset">Reset</string>
 
     <string name="breakdown">Breakdown</string>
     <string name="sign">Sign</string>
