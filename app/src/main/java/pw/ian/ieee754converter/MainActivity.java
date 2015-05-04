@@ -98,19 +98,26 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Sign
-        String signStr = Long.toBinaryString(sign);
-        signStr = (sign == 1 ? "-1" : "+1") + "\n" + signStr;
+        String signStr = (sign == 1 ? "-1" : "+1") + "\n"
+                + Long.toBinaryString(sign);
         ((TextView) findViewById(R.id.sign)).setText(signStr);
 
         // Exponent w/ bias
         int expBias = is32Bit ? 127 : 1023;
-        String expStr = Long.toBinaryString(exponent);
-        expStr = (exponent + " - " + expBias + "= " + (exponent - expBias)) + "\n" + expStr;
+        String expStr = (exponent + " - " + expBias + "= " + (exponent - expBias)) + "\n"
+                // Pad binary string
+                + String.format("%" + (is32Bit ? 8 : 11) + "s",
+                Long.toBinaryString(exponent)).replace(' ', '0');
         ((TextView) findViewById(R.id.exponent)).setText(expStr);
 
         // Mantissa
-        String manStr = Long.toBinaryString(mantissa);
-        manStr = (mantissa) + "\n" + manStr;
+        double unshiftedMantissa = is32Bit ?
+                (Float.intBitsToFloat((0b1111111 << 23) | ((int) mantissa)))
+                : (Double.longBitsToDouble((0b1111111111 << 52) | mantissa));
+        String manStr = (unshiftedMantissa) + "\n"
+                // Pad binary string
+                + String.format("%" + (is32Bit ? 23 : 52) + "s",
+                Long.toBinaryString(mantissa)).replace(' ', '0');
         ((TextView) findViewById(R.id.mantissa)).setText(manStr);
     }
 
