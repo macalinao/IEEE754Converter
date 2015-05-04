@@ -121,11 +121,11 @@ public class MainActivity extends ActionBarActivity {
 
         // Representations
         ((TextView) findViewById(R.id.binaryRep)).setText(is32Bit ?
-                Integer.toBinaryString(Float.floatToRawIntBits((float) number))
-                : Long.toBinaryString(Double.doubleToRawLongBits(number)));
+                String.format("%32s", Integer.toBinaryString(Float.floatToRawIntBits((float) number))).replace(' ', '0')
+                : String.format("%64s", Long.toBinaryString(Double.doubleToRawLongBits(number))).replace(' ', '0'));
         ((TextView) findViewById(R.id.hexRep)).setText(is32Bit ?
-                Integer.toHexString(Float.floatToRawIntBits((float) number))
-                : Long.toHexString(Double.doubleToRawLongBits(number)));
+                String.format("%8s", Integer.toHexString(Float.floatToRawIntBits((float) number))).replace(' ', '0')
+                : String.format("%16s", Long.toHexString(Double.doubleToRawLongBits(number))).replace(' ', '0'));
         ((TextView) findViewById(R.id.decRep)).setText(is32Bit ?
                 Float.toString((float) number) : Double.toString(number));
     }
