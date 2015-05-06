@@ -5,7 +5,7 @@ IEEE-754 Converter
 
 [Play Store][link]
 
-An app to convert IEEE-754 format to different representations.
+An app to convert IEEE-754 format to different representations. Works on Android 4.0.3+.
 
 (My first published Android app!)
 
